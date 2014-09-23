@@ -21,7 +21,6 @@
 
     <div class="text-center">
         <h1><img src="images/poo-inverted.png" height="48px"/> Ohhh... Shit!</h1>
-        <img src="//i.imgflip.com/ce7jq.jpg" class="img-rounded"/>
     </div>
 
     <div class="menu">
@@ -29,6 +28,55 @@
         <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-time"></span> Latest</a>
         <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-fire"></span> Top 10</a>
         <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful code!</a>
+    </div>
+
+    <div class="code">
+        <pre>
+            <code class="java">
+public static boolean isNull(String s) {
+    if (s == null) {
+      return true;
+    }
+
+    int counter = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+
+        if (c == CharPool.SPACE) {
+            continue;
+        }
+        else if (counter > 3) {
+            return false;
+        }
+
+        if (counter == 0) {
+            if (c != CharPool.LOWER_CASE_N) {
+                return false;
+            }
+        }
+        else if (counter == 1) {
+            if (c != CharPool.LOWER_CASE_U) {
+                return false;
+            }
+        }
+        else if ((counter == 2) || (counter == 3)) {
+            if (c != CharPool.LOWER_CASE_L) {
+                return false;
+            }
+        }
+
+        counter++;
+    }
+
+    if ((counter == 0) || (counter == 4)) {
+        return true;
+    }
+
+    return false;
+}
+            </code>
+        </pre>
     </div>
 
 </div>
