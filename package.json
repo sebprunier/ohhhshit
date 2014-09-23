@@ -1,0 +1,12 @@
+{
+    "name": "ohhhshit",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node src/app.js"
+    },
+    "dependencies": {
+        "express": "4.9.4",
+        "body-parser": "1.8.3"
+    }
+}
