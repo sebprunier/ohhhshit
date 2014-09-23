@@ -4,7 +4,12 @@ var CodeHorrorRoutes = function (codeHorrorService) {
 
     var _iAmFeelingLucky = function (req, res) {
         codeHorrorService.findOneRandomly(function (codeHorror) {
-            res.status(200).json(codeHorror);
+            if (codeHorror) {
+                res.status(200).json(codeHorror);
+            }
+            else {
+                res.status(404).send('Not found');
+            }
         });
     };
 
