@@ -3,6 +3,11 @@ h1 {
     font-size: 48px;
 }
 
+h1 a, h1 a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .menu {
     text-align: center;
     margin-top: 20px;
