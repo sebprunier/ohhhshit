@@ -15,29 +15,26 @@ $(document).ready(function () {
     }
 
     function AppViewModel() {
-        this.name = ko.observable();
-        this.title = ko.observable();
-        this.code = ko.observable();
-        this.language = ko.observable();
-        this.creationDate = ko.observable();
+        this.codes = ko.observableArray();
 
         var koModel = this;
         $.ajax({
             type: 'GET',
-            url: '/api/codehorror/' + getParameterByName('id')
+            url: '/api/codehorror/latest'
         })
             .done(function (data, textStatus, xhr) {
-                koModel.name(data.name);
-                koModel.title(data.title);
-                koModel.code(data.code);
-                koModel.language(data.language);
-                koModel.creationDate(moment(data.creationDate).format('YYYY-MM-DD HH:mm'));
+                $.each(data, function (i, code) {
+                    koModel.codes.push({
+                        name: code.name,
+                        title: code.title,
+                        code: code.code,
+                        language: code.language,
+                        creationDate: moment(data.creationDate).format('YYYY-MM-DD HH:mm')
+                    });
+                });
                 highlightCode()
             });
     }
 
     ko.applyBindings(new AppViewModel());
-    if (getParameterByName('creation') === "true") {
-        $('#messages').show();
-    }
 });

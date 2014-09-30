@@ -97,5 +97,4 @@ $(document).ready(function () {
 
     ko.applyBindings(new AppViewModel());
     highlightCode();
-})
-;
+});

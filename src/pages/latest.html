@@ -36,19 +36,15 @@
             code...</a>
     </div>
 
-    <div id="messages" class="alert alert-success" style="display: none;">
-        <span class="glyphicon glyphicon-ok-sign"></span> Creation successful!<br>
-    </div>
-
-    <div>
+    <div data-bind="foreach: codes">
         <h2 data-bind="text: title"></h2>
         <pre>
-            <code data-bind="text: code, css: 'language-' + language()" style="max-height: 100%;">
+            <code data-bind="text: code, css: 'language-' + language" style="max-height: 100%;">
             </code>
         </pre>
         <p class="text-right">
             <span></span>
-            <span data-bind="text: name() + ' - ' + creationDate()"></span>
+            <span data-bind="text: name + ' - ' + creationDate"></span>
         </p>
     </div>
 
@@ -58,7 +54,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-<script src="js/show.js"></script>
+<script src="js/latest.js"></script>
 <script src="js/prism.js"></script>
 
 </body>

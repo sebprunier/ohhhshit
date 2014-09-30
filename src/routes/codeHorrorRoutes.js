@@ -33,6 +33,12 @@ var CodeHorrorRoutes = function (codeHorrorService) {
         }
     };
 
+    var _latest = function (req, res) {
+        codeHorrorService.findLatest(0, 20, function (codeHorrors) {
+            res.status(200).send(codeHorrors);
+        });
+    };
+
     var _create = function (req, res) {
         var code = req.body;
         var validationErrors = [];
@@ -99,6 +105,7 @@ var CodeHorrorRoutes = function (codeHorrorService) {
     return {
         iAmFeelingLucky: _iAmFeelingLucky,
         get: _get,
+        latest: _latest,
         create: _create
     };
 

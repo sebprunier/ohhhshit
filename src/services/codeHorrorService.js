@@ -34,6 +34,16 @@ var CodeHorrorService = function () {
             });
         };
 
+        var _findLatest = function (skip, limit, callback) {
+            mongoDbConnection(function (connection) {
+                var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
+                collection.find().sort({creationDate: -1}).limit(limit).skip(skip).toArray(function (err, items) {
+                    if (err) throw err;
+                    callback(items);
+                });
+            });
+        };
+
         var _insert = function (ip, code, callback) {
             mongoDbConnection(function (connection) {
                     var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
@@ -63,6 +73,7 @@ var CodeHorrorService = function () {
         return {
             findOneRandomly: _findOneRandomly,
             findById: _findById,
+            findLatest: _findLatest,
             insert: _insert
         };
     }
