@@ -9,12 +9,28 @@ var CodeHorrorRoutes = function (codeHorrorService) {
     var _iAmFeelingLucky = function (req, res) {
         codeHorrorService.findOneRandomly(function (codeHorror) {
             if (codeHorror) {
-                res.status(200).json(codeHorror).send();
+                res.status(200).send(codeHorror);
             }
             else {
                 res.status(404).send('Not found');
             }
         });
+    };
+
+    var _get = function (req, res) {
+        var id = req.param('id');
+        if (!id || id.length !== 24) {
+            res.status(400).send('Wrong or missing id parameter');
+        } else {
+            codeHorrorService.findById(id, function (codeHorror) {
+                if (codeHorror) {
+                    res.status(200).send(codeHorror);
+                }
+                else {
+                    res.status(404).send('Not found');
+                }
+            });
+        }
     };
 
     var _create = function (req, res) {
@@ -23,13 +39,16 @@ var CodeHorrorRoutes = function (codeHorrorService) {
         if (code.name && code.name.length > 80) {
             validationErrors.push('Your name must have a maximum of 80 characters')
         }
+        if (!code.title) {
+            validationErrors.push('The title is required')
+        }
         if (code.title && code.title.length > 80) {
             validationErrors.push('The title must have a maximum of 80 characters')
         }
         if (!code.code) {
             validationErrors.push('The code example is required')
         }
-        if (code.code && code.code.length < 9) {
+        if (code.code && code.code.length < 10) {
             validationErrors.push('The code example must have a minimum of 10 characters')
         }
         if (code.code && code.code.length > 6000) {
@@ -43,13 +62,13 @@ var CodeHorrorRoutes = function (codeHorrorService) {
         } else {
             _verifyCaptcha(req, res, function (success) {
                 if (!success) {
-                    res.status(400).json({
+                    res.status(400).send({
                         errors: ['Incorrect Captcha value!']
-                    }).send();
+                    });
                 } else {
                     codeHorrorService.insert(req.connection.remoteAddress, code, function (codeHorror) {
                         res.status(201)
-                            .header('Location', '/codehorror/show.html?id=' + codeHorror['_id'])
+                            .header('Location', '/show.html?id=' + codeHorror['_id'] + '&creation=true')
                             .send('Created');
                     });
                 }
@@ -57,6 +76,7 @@ var CodeHorrorRoutes = function (codeHorrorService) {
         }
     };
 
+    // TODO create a captchaService
     var _verifyCaptcha = function (req, res, callback) {
         if (conf.ENV === 'production') {
             var data = {
@@ -78,6 +98,7 @@ var CodeHorrorRoutes = function (codeHorrorService) {
 
     return {
         iAmFeelingLucky: _iAmFeelingLucky,
+        get: _get,
         create: _create
     };
 

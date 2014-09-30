@@ -23,6 +23,7 @@ var codeHorrorRoutes = new CodeHorrorRoutes(codeHorrorService);
 
 // Configure routes
 app.get('/api/codehorror/random', codeHorrorRoutes.iAmFeelingLucky);
+app.get('/api/codehorror/:id', codeHorrorRoutes.get);
 app.post('/api/codehorror', codeHorrorRoutes.create);
 
 var server = app.listen(app.get('port'), function () {

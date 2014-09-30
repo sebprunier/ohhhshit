@@ -35,10 +35,10 @@
     </div>
 
     <div class="menu">
-        <a href="random.html" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling
+        <a href="show.html" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling
             lucky!</a>
-        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-time"></span> Latest</a>
-        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-fire"></span> Top 10</a>
+        <a href="latest.html" class="btn btn-default"><span class="glyphicon glyphicon-time"></span> Latest</a>
+        <a href="top10.html" class="btn btn-default"><span class="glyphicon glyphicon-fire"></span> Top 10</a>
         <a href="new.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful
             code...</a>
     </div>
@@ -61,12 +61,12 @@
                            data-bind="value: name">
                 </div>
                 <div class="form-group">
-                    <label for="code">Share the code!</label>
+                    <label for="code">Share the code! *</label>
                     <textarea id="code" class="form-control" rows="10"
                               data-bind="value: code, valueUpdate: 'input', event: { input: refresh }"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="title">Give it a title!</label>
+                    <label for="title">Give it a title! *</label>
                     <input id="title" type="text" class="form-control" placeholder="WAT?"
                            data-bind="value: title">
                 </div>
