@@ -9,7 +9,7 @@
 
     <link href="//fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/poo.png"/>
@@ -34,9 +34,8 @@
         <a href="new.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful code...</a>
     </div>
 
-    <div class="code">
         <pre>
-            <code class="java">
+            <code class="language-java" style="max-height: 100%;">
 public static boolean isNull(String s) {
     if (s == null) {
       return true;
@@ -81,13 +80,16 @@ public static boolean isNull(String s) {
 }
             </code>
         </pre>
-    </div>
 
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+<script src="js/prism.js"></script>
+<script type="text/javascript">
+    Prism.highlightAll(true, function() {});
+</script>
 
 </body>
 </html>

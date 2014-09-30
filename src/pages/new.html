@@ -9,14 +9,14 @@
 
     <link href="//fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/poo.png"/>
 
     <script type="text/javascript">
         var RecaptchaOptions = {
-            theme : 'white',
+            theme: 'white',
             lang: 'en'
         };
     </script>
@@ -47,19 +47,31 @@
         <h2>You saw awful code? Please give us evidence!</h2>
     </div>
 
+    <div id="errors" class="alert alert-warning" style="display: none;" data-bind="foreach: errors">
+        <span class="glyphicon glyphicon-remove-sign"></span> <span data-bind="text: $data"></span><br>
+    </div>
+
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
+            <div class=""></div>
             <form role="form">
                 <div class="form-group">
                     <label for="name">Who are you?</label>
-                    <input id="name" type="text" class="form-control" placeholder="Anonymous coder">
+                    <input id="name" type="text" class="form-control" placeholder="Anonymous coder"
+                           data-bind="value: name">
                 </div>
                 <div class="form-group">
-                    <label for="code">Show me the code!</label>
-                    <textarea id="code" class="form-control" rows="10" data-bind="value: code, valueUpdate: 'input', event: { input: refresh }"></textarea>
+                    <label for="code">Share the code!</label>
+                    <textarea id="code" class="form-control" rows="10"
+                              data-bind="value: code, valueUpdate: 'input', event: { input: refresh }"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="language">Which language is that shit?</label>
+                    <label for="title">Give it a title!</label>
+                    <input id="title" type="text" class="form-control" placeholder="WAT?"
+                           data-bind="value: title">
+                </div>
+                <div class="form-group">
+                    <label for="language">Which language is that?</label>
                     <select id="language"
                             class="form-control"
                             data-bind="value: selectedLanguage,
@@ -78,34 +90,27 @@
                     </p>
                 </div>
                 <div class="form-group">
-                    <label for="reference">Where did you see that?</label>
-                    <input id="reference" type="text" class="form-control"
-                           placeholder="http://www.destroyallsoftware.com/talks/wat">
-                </div>
-                <div class="form-group">
                     <div class="col-md-6 text-left" style="padding-left: 0px;">
                         <script type="text/javascript"
-                                src="http://www.google.com/recaptcha/api/challenge?k=6Lf-9PoSAAAAAAoLMbhjwJhH8W8FUUb-oH977Xm1">
+                                src="http://www.google.com/recaptcha/api/challenge?k=6LeoIfsSAAAAADgh9JKYvHl8d0gzuy_KGptG-76W">
                         </script>
                     </div>
                     <div class="col-md-6 text-center" style="padding-top: 30px;">
-                        <button type="button" class="btn btn-lg btn-danger" disabled>
+                        <button type="button" class="btn btn-lg btn-danger" data-bind="disable: submitted, click: submit">
                             Submit <span class="glyphicon glyphicon-send"></span>
                         </button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col-md-5">
-            <div class="code text-left">
-                <pre>
-                    <code data-bind="text: code, css: selectedLanguage">
-                    </code>
-                </pre>
-            </div>
+        <div class="col-md-6">
             <div class="text-center">
                 <i>Preview</i>
             </div>
+            <pre>
+                <code id="codepreview" data-bind="text: code, css: selectedLanguageCssClass">
+                </code>
+            </pre>
         </div>
     </div>
 
@@ -113,9 +118,9 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
-<script src="./js/new.js"></script>
+<script src="js/prism.js"></script>
+<script src="js/new.js"></script>
 
 </body>
 </html>

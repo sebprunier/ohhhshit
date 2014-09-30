@@ -7,6 +7,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var CodeHorrorService = require('./services/codeHorrorService');
+
 var CodeHorrorRoutes = require('./routes/codeHorrorRoutes');
 
 var app = express();
@@ -22,6 +23,7 @@ var codeHorrorRoutes = new CodeHorrorRoutes(codeHorrorService);
 
 // Configure routes
 app.get('/api/codehorror/random', codeHorrorRoutes.iAmFeelingLucky);
+app.post('/api/codehorror', codeHorrorRoutes.create);
 
 var server = app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + server.address().port);

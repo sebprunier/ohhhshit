@@ -23,8 +23,32 @@ var CodeHorrorService = function () {
         });
     };
 
+    var _insert = function (ip, code, callback) {
+        mongoDbConnection(function (connection) {
+            var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
+            var document = {
+                version: 1,
+                creationDate: new Date(),
+                ip: ip,
+                name: code.name,
+                code: code.code,
+                title: code.title,
+                language: code.language,
+                votes: {
+                    good: 0,
+                    bad: 0
+                }
+            }
+            collection.insert(document, {w: 1}, function (err, records) {
+                if (err) throw err;
+                callback(records[0]);
+            });
+        });
+    };
+
     return {
-        findOneRandomly: _findOneRandomly
+        findOneRandomly: _findOneRandomly,
+        insert: _insert
     };
 };
 

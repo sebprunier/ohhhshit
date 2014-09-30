@@ -10,73 +10,92 @@ $(document).ready(function () {
     var JAVASCRIPT = new Language('javascript', 'JavaScript')
 
     var ALL_LANGUAGES = [
-        new Language('actionscript', 'ActionScript'),
-        new Language('asciidoc', 'AsciiDoc'),
         new Language('bash', 'Bash'),
-        new Language('brainfuck', 'Brainfuck'),
-        new Language('coffeescript', 'CoffeeScript'),
         new Language('c', 'C'),
-        new Language('c++', 'C++'),
-        new Language('clojure', 'Clojure'),
+        new Language('coffeescript', 'CoffeeScript'),
+        new Language('cpp', 'C++'),
         new Language('csharp', 'C#'),
         new Language('css', 'CSS'),
-        new Language('d', 'D'),
-        new Language('dart', 'Dart'),
-        new Language('delphi', 'Delphi'),
-        new Language('dos', 'DOS'),
-        new Language('erlang', 'Erlang'),
-        new Language('fsharp', 'F#'),
         new Language('go', 'Go'),
         new Language('groovy', 'Groovy'),
-        new Language('haml', 'Haml'),
         new Language('haskell', 'Haskell'),
-        new Language('html', 'Html'),
         new Language('java', 'Java'),
         JAVASCRIPT,
-        new Language('less', 'Less'),
-        new Language('lisp', 'Lisp'),
-        new Language('lua', 'Lua'),
-        new Language('markdown', 'Markdown'),
-        new Language('ocaml', 'OCcaml'),
         new Language('objectivec', 'Objective-C'),
-        new Language('perl', 'Perl'),
         new Language('php', 'Php'),
         new Language('python', 'Python'),
-        new Language('r', 'R'),
         new Language('ruby', 'Ruby'),
-        new Language('rust', 'Rust'),
         new Language('scala', 'Scala'),
-        new Language('scheme', 'Scheme'),
-        new Language('smalltalk', 'Smalltalk'),
         new Language('sql', 'Sql'),
-        new Language('stylus', 'Stylus'),
-        new Language('swift', 'Swift'),
-        new Language('thrift', 'Thrift'),
-        new Language('typescript', 'Typescript'),
-        new Language('vbnet', 'VB.Net'),
-        new Language('vbscript', 'VBScript'),
-        new Language('x86asm', 'x86 Assembly'),
-        new Language('xml', 'Xml')
+        new Language('swift', 'Swift')
     ];
 
     function highlightCode() {
-        $('pre code').each(function (i, block) {
-            hljs.highlightBlock(block);
+        Prism.highlightAll(true, function () {
         });
     }
 
     function AppViewModel() {
+        this.name = ko.observable();
+        this.title = ko.observable();
         this.code = ko.observable('[] + [] // returns \'\'');
         this.availableLanguages = ko.observableArray(ALL_LANGUAGES);
         this.selectedLanguage = ko.observable(JAVASCRIPT.id);
+        this.selectedLanguageCssClass = ko.computed(function () {
+            return 'language-' + this.selectedLanguage();
+        }, this);
+
+        this.submitted = ko.observable(false);
+        this.errors = ko.observableArray();
 
         this.refresh = function refresh() {
             highlightCode();
-        }
+        };
+
+        this.submit = function submit() {
+            var koModel = this;
+
+            this.submitted(true);
+            this.errors.removeAll();
+            $('#errors').hide();
+
+            var postRequest = {
+                name: this.name(),
+                code: this.code(),
+                title: this.title(),
+                language: this.selectedLanguage()
+            };
+            if (Recaptcha) {
+                postRequest['recaptcha_challenge'] = Recaptcha.get_challenge();
+                postRequest['recaptcha_response'] = Recaptcha.get_response();
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/api/codehorror',
+                data: JSON.stringify(postRequest),
+                contentType: 'application/json'
+            })
+                .done(function (data, textStatus, xhr) {
+                    var location = xhr.getResponseHeader('Location');
+                    window.location.href = location;
+                })
+                .fail(function (xhr, responseText) {
+                    var body = $.parseJSON(xhr.responseText);
+                    if (body.errors) {
+                        $.each(body.errors, function (i, error) {
+                            koModel.errors.push(error);
+                        });
+                    }
+                    else {
+                        koModel.errors().push('Technical error... Please try later!');
+                    }
+                    $('#errors').show();
+                    koModel.submitted(false);
+                });
+        };
     }
 
-    // Activates knockout.js
     ko.applyBindings(new AppViewModel());
-    hljs.configure({languages: []});
     highlightCode();
-});
+})
+;
