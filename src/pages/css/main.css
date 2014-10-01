@@ -14,11 +14,16 @@ h1 a, h1 a:hover {
     margin-bottom: 40px;
 }
 
-#disclaimer {
-    margin-top: 40px;
-}
-
 code {
     max-height: 100% !important;
     overflow: hidden !important;
+}
+
+.index-title {
+    font-family: 'Frijole', cursive;
+    font-size: 18px;
+}
+
+a, a:focus, a:hover {
+    color: #E74C3C
 }

@@ -22,6 +22,7 @@ var codeHorrorService = new CodeHorrorService();
 var codeHorrorRoutes = new CodeHorrorRoutes(codeHorrorService);
 
 // Configure routes
+app.get('/api/codehorror/stats', codeHorrorRoutes.stats);
 app.get('/api/codehorror/random', codeHorrorRoutes.iAmFeelingLucky);
 app.get('/api/codehorror/latest', codeHorrorRoutes.latest);
 app.get('/api/codehorror/:id', codeHorrorRoutes.get);

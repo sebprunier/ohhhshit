@@ -63,20 +63,46 @@ if(website == null) {
         </div>
     </div>
 
-    <div id="disclaimer" class="text-left">
-        <h5>Disclaimer:</h5>
-        <ul>
-            <li>Please take with humor the code examples shwon on this website!</li>
-            <li>If you find bugs on the site, you can <a href="new.html">report the incorrect code here</a> ...</li>
-            <li>... or <a href="https://github.com/sebprunier/ohhhshit" target="_blank">contribute to the project</a> :-) !</li>
-        </ul>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-md-4">
+            <div class="text-center" style="padding-bottom: 10px;">
+                <span class="index-title">Tweets</span>
+            </div>
+            <a class="twitter-timeline" href="https://twitter.com/_ohhh_shit"
+               height="300"
+               data-chrome="noheader nofooter noscrollbar noborders transparent"
+               data-tweet-limit="3"
+               data-link-color="#E74C3C"
+               data-widget-id="517279566306344960">
+                Tweets by @_ohhh_shit
+            </a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="text-center" style="padding-bottom: 10px;">
+                <span class="index-title">Stats</span>
+            </div>
+            <span class="glyphicon glyphicon-stats"></span> <span data-bind="text: totalCodeHorrors"></span> code horrors
+        </div>
+        <div class="col-md-4 text-left">
+            <div class="text-center" style="padding-bottom: 10px;">
+                <span class="index-title">Disclaimer</span>
+            </div>
+            <p class="text-justify">
+                Please take with humor the code examples shwon on this website!<br><br>
+                If you find some bugs, you can <a href="new.html">report the incorrect code here</a>...
+                or <a href="https://github.com/sebprunier/ohhhshit" target="_blank">contribute to the project</a> :-) !
+            </p>
+        </div>
     </div>
 
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
 <script src="js/prism.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

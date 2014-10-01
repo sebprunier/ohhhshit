@@ -1,5 +1,3 @@
-//hljs.initHighlightingOnLoad();
-
 $(document).ready(function () {
 
     var Language = function (id, name) {

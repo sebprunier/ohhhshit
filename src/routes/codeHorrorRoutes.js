@@ -6,6 +6,12 @@ var CodeHorrorRoutes = function (codeHorrorService) {
 
     var conf = require('../../conf/conf');
 
+    var _stats = function (req, res) {
+        codeHorrorService.stats(function (stats) {
+            res.status(200).send(stats);
+        });
+    }
+
     var _iAmFeelingLucky = function (req, res) {
         codeHorrorService.findOneRandomly(function (codeHorror) {
             if (codeHorror) {
@@ -106,7 +112,8 @@ var CodeHorrorRoutes = function (codeHorrorService) {
         iAmFeelingLucky: _iAmFeelingLucky,
         get: _get,
         latest: _latest,
-        create: _create
+        create: _create,
+        stats: _stats
     };
 
 };
