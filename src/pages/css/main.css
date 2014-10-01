@@ -11,9 +11,13 @@ h1 a, h1 a:hover {
 .menu {
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .code {
     margin-top: 20px;
+}
+
+#disclaimer {
+    margin-top: 40px;
 }

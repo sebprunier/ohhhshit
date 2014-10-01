@@ -8,7 +8,7 @@
 
     <link href="//fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/poo.png"/>
@@ -24,21 +24,48 @@
                 <img src="images/poo-inverted.png" height="48px"/> Ohhh... Shit!
             </a>
         </h1>
-        <img src="//i.imgflip.com/ce7jq.jpg" class="img-rounded"/>
     </div>
 
     <div class="menu">
-        <a href="show.html" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling lucky!</a>
+        <a href="show.html" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling
+            lucky!</a>
         <a href="latest.html" class="btn btn-default"><span class="glyphicon glyphicon-time"></span> Latest</a>
         <a href="top10.html" class="btn btn-default"><span class="glyphicon glyphicon-fire"></span> Top 10</a>
-        <a href="new.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful code...</a>
+        <a href="new.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful
+            code...</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="//i.imgflip.com/ce7jq.jpg" class="img-rounded"/>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="language-java">
+if(website == null) {
+    website.render();
+} else {
+    System.err.println("Website is not available...");
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div id="disclaimer" class="text-left">
+        <h5>Disclaimer:</h5>
+        <ul>
+            <li>Please take with humor the code examples shwon on this website!</li>
+            <li>If you find bugs on the site, you can <a href="new.html">report the incorrect code here</a> ...</li>
+            <li>... or <a href="https://github.com/sebprunier/ohhhshit" target="_blank">contribute to the project</a> :-) !</li>
+        </ul>
     </div>
 
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+<script src="js/prism.js"></script>
 
 </body>
 </html>
