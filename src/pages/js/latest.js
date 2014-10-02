@@ -27,7 +27,7 @@ $(document).ready(function () {
                         title: code.title,
                         code: code.code,
                         language: code.language,
-                        creationDate: moment(data.creationDate).format('YYYY-MM-DD HH:mm')
+                        creationDate: moment(code.creationDate).format('YYYY-MM-DD HH:mm')
                     });
                 });
                 highlightCode()
