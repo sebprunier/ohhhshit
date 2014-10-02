@@ -7,15 +7,26 @@ var CodeHorrorService = function () {
     var ObjectID = require('mongodb').ObjectID;
     var mongoDbConnection = require('./mongoConnection.js');
 
-    // TODO get more stats ! (last code horror, ...)
-    var _stats = function (callback) {
+    var _count = function (callback) {
         mongoDbConnection(function (connection) {
             var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
             collection.count(function (err, count) {
                 if (err) throw err;
-                callback({
-                    total: count
-                });
+                callback(count);
+            });
+
+        });
+    };
+
+    var _groupByLanguage = function (callback) {
+        mongoDbConnection(function (connection) {
+            var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
+            collection.aggregate([
+                {$group: {_id: "$language", total: {$sum: 1}}},
+                {$sort: {_id: -1}}
+            ], function (err, byLanguage) {
+                if (err) throw err;
+                callback(byLanguage);
             });
 
         });
@@ -85,11 +96,12 @@ var CodeHorrorService = function () {
     };
 
     return {
+        count: _count,
+        groupByLanguage: _groupByLanguage,
         findOneRandomly: _findOneRandomly,
         findById: _findById,
         findLatest: _findLatest,
-        insert: _insert,
-        stats: _stats
+        insert: _insert
     };
 };
 

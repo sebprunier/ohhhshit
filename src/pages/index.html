@@ -49,8 +49,8 @@
             </a>
         </div>
         <div class="col-md-2">
-            <a href="top10.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-fire"></span> Top 10
+            <a href="stats.html" class="btn btn-default btn-block">
+                <span class="glyphicon glyphicon-stats"></span> Stats
             </a>
         </div>
         <div class="col-md-2">
@@ -80,7 +80,7 @@ if(website == null) {
     <div class="row" style="margin-top: 40px;">
         <div class="col-md-4">
             <div class="text-center" style="padding-bottom: 10px;">
-                <span class="index-title">Tweets</span>
+                <span class="index-title"><span class="glyphicon glyphicon-retweet"></span> Tweets</span>
             </div>
             <a class="twitter-timeline" href="https://twitter.com/_ohhh_shit"
                height="300"
@@ -94,13 +94,25 @@ if(website == null) {
         </div>
         <div class="col-md-4 text-center" style="margin-bottom: 20px;">
             <div class="text-center" style="padding-bottom: 10px;">
-                <span class="index-title">Stats</span>
+                <span class="index-title"><span class="glyphicon glyphicon-stats"></span> Stats</span>
             </div>
-            <span class="glyphicon glyphicon-stats"></span> <span data-bind="text: totalCodeHorrors"></span> code horrors
+            <p>
+                Total horrors:<br>
+                <b><span data-bind="text: totalCodeHorrors"></span></b>
+            </p>
+            <p>
+                Last horror date:<br>
+                <b><span data-bind="text: lastCodeHorrorDate"></span></b>
+            </p>
+            <p>
+                Most terrifying language:<br>
+                <b><span data-bind="text: worstLanguage"></span></b>
+            </p>
+            <a href="stats.html">more stats...</a>
         </div>
         <div class="col-md-4 text-left">
             <div class="text-center" style="padding-bottom: 10px;">
-                <span class="index-title">Disclaimer</span>
+                <span class="index-title"><span class="glyphicon glyphicon-volume-up"></span> Disclaimer</span>
             </div>
             <p class="text-justify">
                 Please take with humor the code examples shown on this website!<br><br>
@@ -115,6 +127,7 @@ if(website == null) {
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
 <script src="js/prism.js"></script>
 <script src="js/index.js"></script>
 

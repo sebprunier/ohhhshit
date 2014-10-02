@@ -3,13 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
 
     <title>Ohhh... Shit! I see awful code.</title>
 
     <link href="//fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/prism.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/poo.png"/>
@@ -61,15 +59,25 @@
         </div>
     </div>
 
-    <div data-bind="foreach: codes">
-        <h2 data-bind="text: title"></h2>
-        <pre>
-            <code data-bind="text: code, css: 'language-' + language">
-            </code>
-        </pre>
-        <p class="text-right">
-            <span data-bind="text: name + ' - ' + creationDate"></span>
-        </p>
+    <div class="row">
+        <div class="col-md-6">
+            <h2><span class="glyphicon glyphicon-stats"></span> Code horrors stats</h2>
+            <p class="stat-entry">
+                Total horrors:
+                <span data-bind="text: totalCodeHorrors"></span>
+            </p>
+            <p class="stat-entry">
+                Last horror date:
+                <span data-bind="text: lastCodeHorrorDate"></span>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2>What's the most terrifying language?</h2>
+            <p class="stat-entry">
+                <span class="glyphicon glyphicon-arrow-right"></span> <span data-bind="text: worstLanguage"></span>!
+            </p>
+            <div id="languageChart" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        </div>
     </div>
 
 </div>
@@ -78,8 +86,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-<script src="js/latest.js"></script>
-<script src="js/prism.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highcharts/4.0.4/highcharts.js"></script>
+<script src="js/highcharts-theme.js"></script>
+<script src="js/stats.js"></script>
 
 </body>
 </html>

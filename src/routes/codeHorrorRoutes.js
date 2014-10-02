@@ -2,15 +2,37 @@
 
 var CodeHorrorRoutes = function (codeHorrorService) {
 
+    var async = require('async');
     var Recaptcha = require('recaptcha').Recaptcha;
 
     var conf = require('../../conf/conf');
 
     var _stats = function (req, res) {
-        codeHorrorService.stats(function (stats) {
-            res.status(200).send(stats);
-        });
-    }
+        async.parallel({
+                total: function (callback) {
+                    codeHorrorService.count(function (n) {
+                        callback(null, n);
+                    });
+                },
+                latest: function (callback) {
+                    codeHorrorService.findLatest(1, 0, function (codeHorror) {
+                        var result = {
+                            ref: codeHorror[0]._id,
+                            creationDate: codeHorror[0].creationDate
+                        };
+                        callback(null, result);
+                    });
+                },
+                languages: function (callback) {
+                    codeHorrorService.groupByLanguage(function (byLanguage) {
+                        callback(null, byLanguage);
+                    });
+                }
+            },
+            function (err, results) {
+                res.status(200).send(results);
+            });
+    };
 
     var _iAmFeelingLucky = function (req, res) {
         codeHorrorService.findOneRandomly(function (codeHorror) {

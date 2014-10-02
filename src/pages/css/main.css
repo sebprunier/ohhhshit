@@ -31,3 +31,11 @@ code {
 a, a:focus, a:hover {
     color: #E74C3C
 }
+
+.stat-entry {
+    font-size: 18px;
+}
+
+.stat-entry span {
+    font-weight: bold;
+}
