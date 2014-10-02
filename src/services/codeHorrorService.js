@@ -23,7 +23,7 @@ var CodeHorrorService = function () {
             var collection = connection.collection(CODE_HORRORS_COLLECTION_NAME);
             collection.aggregate([
                 {$group: {_id: "$language", total: {$sum: 1}}},
-                {$sort: {_id: -1}}
+                {$sort: {total: -1}}
             ], function (err, byLanguage) {
                 if (err) throw err;
                 callback(byLanguage);
