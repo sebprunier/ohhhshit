@@ -15,7 +15,7 @@ var CodeHorrorRoutes = function (codeHorrorService) {
                     });
                 },
                 latest: function (callback) {
-                    codeHorrorService.findLatest(1, 0, function (codeHorror) {
+                    codeHorrorService.findLatest(0, 1, function (codeHorror) {
                         var result = {
                             ref: codeHorror[0]._id,
                             creationDate: codeHorror[0].creationDate
