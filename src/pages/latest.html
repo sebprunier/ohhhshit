@@ -38,13 +38,27 @@
         </h1>
     </div>
 
-    <div class="menu">
-        <a href="show.html" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling
-            lucky!</a>
-        <a href="latest.html" class="btn btn-default"><span class="glyphicon glyphicon-time"></span> Latest</a>
-        <a href="top10.html" class="btn btn-default"><span class="glyphicon glyphicon-fire"></span> Top 10</a>
-        <a href="new.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> I saw awful
-            code...</a>
+    <div class="menu row">
+        <div class="col-md-2 col-md-offset-2">
+            <a href="show.html" class="btn btn-default btn-block">
+                <span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling lucky!
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="latest.html" class="btn btn-default btn-block">
+                <span class="glyphicon glyphicon-time"></span> Latest
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="top10.html" class="btn btn-default btn-block">
+                <span class="glyphicon glyphicon-fire"></span> Top 10
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="new.html" class="btn btn-danger btn-block">
+                <span class="glyphicon glyphicon-plus-sign"></span> I saw awful code...
+            </a>
+        </div>
     </div>
 
     <div data-bind="foreach: codes">
