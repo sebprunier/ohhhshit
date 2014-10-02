@@ -22,7 +22,7 @@ $(document).ready(function () {
                     text: null
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{point.percentage:.1f}%</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -30,7 +30,7 @@ $(document).ready(function () {
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            format: '{point.percentage:.1f} %',
                             style: {
                                 color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                             }
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 series: [
                     {
                         type: 'pie',
-                        name: 'Browser share',
+                        name: 'Horrifying percentage',
                         data: languagesData
                     }
                 ]
