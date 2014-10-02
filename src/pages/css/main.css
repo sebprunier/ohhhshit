@@ -39,3 +39,7 @@ a, a:focus, a:hover {
 .stat-entry span {
     font-weight: bold;
 }
+
+.twitter-follow-button {
+    vertical-align: middle;
+}
