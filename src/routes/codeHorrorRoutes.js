@@ -3,9 +3,34 @@
 var CodeHorrorRoutes = function (codeHorrorService) {
 
     var async = require('async');
+    var RSS = require('rss');
     var Recaptcha = require('recaptcha').Recaptcha;
 
     var conf = require('../../conf/conf');
+
+    var _feed = function (req, res) {
+        var feed = new RSS({
+            title: 'Ohhh Shit RSS feed',
+            description: 'Ohhh Shit RSS feed',
+            feed_url: 'http://www.ohhhshit.com/feed.xml',
+            site_url: 'http://www.ohhhshit.com',
+            image_url: 'http://www.ohhhshit.com/images/poo.png',
+            language: 'en',
+            pubDate: new Date()
+        });
+
+        codeHorrorService.findLatest(0, 20, function (codeHorrors) {
+            codeHorrors.forEach(function (item) {
+                feed.item({
+                    title: item.title,
+                    url: 'http://www.ohhhshit.com/show.html?id=' + item._id,
+                    author: item.name,
+                    date: item.creationDate
+                });
+            });
+            res.status(200).send(feed.xml());
+        });
+    }
 
     var _stats = function (req, res) {
         async.parallel({
@@ -131,6 +156,7 @@ var CodeHorrorRoutes = function (codeHorrorService) {
     };
 
     return {
+        feed: _feed,
         iAmFeelingLucky: _iAmFeelingLucky,
         get: _get,
         latest: _latest,

@@ -28,6 +28,9 @@ app.get('/api/codehorror/latest', codeHorrorRoutes.latest);
 app.get('/api/codehorror/:id', codeHorrorRoutes.get);
 app.post('/api/codehorror', codeHorrorRoutes.create);
 
+// RSS feed
+app.get('/feed.xml', codeHorrorRoutes.feed);
+
 var server = app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + server.address().port);
 });
