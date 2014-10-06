@@ -62,7 +62,9 @@ var CodeHorrorRoutes = function (codeHorrorService) {
     var _iAmFeelingLucky = function (req, res) {
         codeHorrorService.findOneRandomly(function (codeHorror) {
             if (codeHorror) {
-                res.status(200).send(codeHorror);
+                res.status(200)
+                    .header('Location', '/show.html?id=' + codeHorror._id)
+                    .send();
             }
             else {
                 res.status(404).send('Not found');
