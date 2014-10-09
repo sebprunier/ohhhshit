@@ -41,12 +41,12 @@
     <div class="menu row">
         <div class="col-md-2 col-md-offset-2">
             <a href="show.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling lucky!
+                <span class="glyphicon glyphicon-gift"></span> I'm feeling lucky!
             </a>
         </div>
         <div class="col-md-2">
             <a href="latest.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-time"></span> Latest
+                <span class="glyphicon glyphicon-time"></span> Latest horrors
             </a>
         </div>
         <div class="col-md-2">
@@ -73,10 +73,14 @@
                 <span data-bind="text: lastCodeHorrorDate"></span>
             </p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
             <h2>What's the most terrifying language?</h2>
             <p class="stat-entry">
-                <span class="glyphicon glyphicon-arrow-right"></span> <span data-bind="text: worstLanguage"></span>!
+                <span class="glyphicon glyphicon-arrow-right"></span>
+                &nbsp;&nbsp;
+                <span data-bind="text: worstLanguage"></span>
+                &nbsp;&nbsp;
+                <span class="glyphicon glyphicon-arrow-left"></span>
             </p>
             <div id="languageChart" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
         </div>

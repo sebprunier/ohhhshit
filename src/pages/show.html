@@ -43,12 +43,12 @@
     <div class="menu row">
         <div class="col-md-2 col-md-offset-2">
             <a href="show.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling lucky!
+                <span class="glyphicon glyphicon-gift"></span> I'm feeling lucky!
             </a>
         </div>
         <div class="col-md-2">
             <a href="latest.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-time"></span> Latest
+                <span class="glyphicon glyphicon-time"></span> Latest horrors
             </a>
         </div>
         <div class="col-md-2">
@@ -73,10 +73,13 @@
             <code data-bind="text: code, css: 'language-' + language()">
             </code>
         </pre>
-        <p class="text-right">
-            <span></span>
-            <span data-bind="text: name() + ' - ' + creationDate()"></span>
-        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-right">
+                    <span data-bind="text: name() + ' - ' + creationDate()"></span>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div>

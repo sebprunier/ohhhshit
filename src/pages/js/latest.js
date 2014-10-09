@@ -23,6 +23,7 @@ $(document).ready(function () {
             .done(function (data, textStatus, xhr) {
                 $.each(data, function (i, code) {
                     koModel.codes.push({
+                        url: '/show.html?id=' + code._id,
                         name: code.name,
                         title: code.title,
                         code: code.code,

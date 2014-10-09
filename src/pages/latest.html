@@ -43,12 +43,12 @@
     <div class="menu row">
         <div class="col-md-2 col-md-offset-2">
             <a href="show.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-thumbs-up"></span> I'm feeling lucky!
+                <span class="glyphicon glyphicon-gift"></span> I'm feeling lucky!
             </a>
         </div>
         <div class="col-md-2">
             <a href="latest.html" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-time"></span> Latest
+                <span class="glyphicon glyphicon-time"></span> Latest horrors
             </a>
         </div>
         <div class="col-md-2">
@@ -64,14 +64,25 @@
     </div>
 
     <div data-bind="foreach: codes">
-        <h2 data-bind="text: title"></h2>
+        <a class="title" data-bind="attr: { href: url }">
+            <h2 data-bind="text: title"></h2>
+        </a>
         <pre>
             <code data-bind="text: code, css: 'language-' + language">
             </code>
         </pre>
-        <p class="text-right">
-            <span data-bind="text: name + ' - ' + creationDate"></span>
-        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-left">
+                    <a data-bind="attr: { href: url }">more...</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p class="text-right">
+                    <span data-bind="text: name + ' - ' + creationDate"></span>
+                </p>
+            </div>
+        </div>
     </div>
 
 </div>
